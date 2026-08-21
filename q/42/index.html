@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Étape 42</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Anton&family=Permanent+Marker&family=Space+Mono:wght@400;700&display=swap');
+  :root{ --bitume:#15130f; --craie:#f5f2e9; --rouille:#c1401a; }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html,body{width:100%;height:100%;background:#000;overflow:hidden;font-family:'Space Mono',monospace;}
+  .frame{position:fixed;inset:0;background:var(--bitume);}
+  video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .scrim{position:absolute;left:0;right:0;bottom:0;height:55%;
+    background:linear-gradient(to top, rgba(0,0,0,.92) 0%, rgba(0,0,0,.7) 40%, rgba(0,0,0,0) 100%);
+    pointer-events:none;
+  }
+  .tear{position:absolute;top:0;left:0;width:56px;height:56px;background:var(--craie);
+    clip-path:polygon(0 0, 100% 0, 0 100%); opacity:.92; pointer-events:none;}
+  .tag-number{position:absolute;top:12px;right:12px;width:32px;height:32px;border-radius:50%;
+    border:2px solid var(--craie); display:flex;align-items:center;justify-content:center;
+    font-family:'Permanent Marker',cursive;color:var(--craie);font-size:14px;transform:rotate(-6deg);
+    pointer-events:none;}
+  .verse{position:absolute;left:20px;right:20px;bottom:48px;text-align:left;}
+  .verse .line{font-family:'Anton',sans-serif;text-transform:uppercase;color:var(--craie);
+    font-size:clamp(24px,7vw,32px);line-height:.95;letter-spacing:.01em;display:block;}
+  .verse .line:nth-child(1){transform:rotate(-1.5deg) translateX(-2px);}
+  .verse .line:nth-child(2){transform:rotate(1deg) translateX(6px);}
+  .verse .line:nth-child(3){transform:rotate(-.5deg) translateX(0);}
+  .stamp{position:absolute;left:20px;right:20px;bottom:16px;font-size:10px;letter-spacing:.06em;
+    color:rgba(245,242,233,.65);display:flex;justify-content:space-between;
+    border-top:1px solid rgba(245,242,233,.25);padding-top:6px;pointer-events:none;}
+  .unmute{position:absolute;bottom:14px;right:16px;z-index:5;background:rgba(21,19,15,.75);
+    color:var(--craie);border:1px solid rgba(245,242,233,.4);border-radius:20px;
+    padding:8px 14px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.05em;
+    -webkit-tap-highlight-color:transparent;}
+</style>
+</head>
+<body>
+  <div class="frame">
+    <video id="v" src="../../videos/ACO_42.mp4" autoplay muted loop playsinline></video>
+    <div class="scrim"></div>
+    <div class="tear"></div>
+    <div class="tag-number">42</div>
+
+    <!-- ↓↓↓ MODIFIEZ LE VERS ICI (2-4 mots par ligne, 3 lignes max) ↓↓↓ -->
+    <div class="verse">
+      <span class="line">VOTRE</span>
+      <span class="line">VERS</span>
+      <span class="line">ICI</span>
+    </div>
+    <!-- ↑↑↑ FIN DU VERS ↑↑↑ -->
+
+    <div class="stamp"><span>20E · ÉTAPE 42</span><span>Q-42</span></div>
+    <button class="unmute" id="btn" onclick="toggleSound()">🔇 SON</button>
+  </div>
+  <script>
+    const v = document.getElementById('v');
+    const btn = document.getElementById('btn');
+    function toggleSound(){
+      v.muted = !v.muted;
+      btn.textContent = v.muted ? '🔇 SON' : '🔊 SON';
+    }
+  </script>
+</body>
+</html>

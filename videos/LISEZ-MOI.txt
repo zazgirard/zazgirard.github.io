@@ -1,0 +1,13 @@
+Placez ici vos 43 fichiers vidéo, SANS LES RENOMMER :
+
+ACO_1.mp4
+ACO_2.mp4
+...
+ACO_43.mp4
+
+Chaque page du site (dossier /q/01/ à /q/43/) va chercher son fichier
+vidéo directement dans ce dossier /videos/, par son nom exact.
+
+Une fois les 43 fichiers copiés ici, supprimez ce fichier LISEZ-MOI.txt
+(facultatif, il ne gêne pas le fonctionnement du site) et déployez le
+dossier complet sur Netlify — voir la marche à suivre fournie à côté.
