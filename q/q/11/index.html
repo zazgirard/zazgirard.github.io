@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Étape 11</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Anton&family=Permanent+Marker&family=Space+Mono:wght@400;700&display=swap');
+  :root{ --bitume:#15130f; --craie:#f5f2e9; --rouille:#c1401a; }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-snap-type:y proximity;}
+  body{width:100%;background:var(--bitume);font-family:'Space Mono',monospace;}
+
+  .frame{position:relative;width:100%;height:100svh;background:var(--bitume);scroll-snap-align:start;overflow:hidden;}
+  video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .scrim{position:absolute;left:0;right:0;bottom:0;height:55%;
+    background:linear-gradient(to top, rgba(0,0,0,.92) 0%, rgba(0,0,0,.7) 40%, rgba(0,0,0,0) 100%);
+    pointer-events:none;
+  }
+  .tear{position:absolute;top:0;left:0;width:56px;height:56px;background:var(--craie);
+    clip-path:polygon(0 0, 100% 0, 0 100%); opacity:.92; pointer-events:none;}
+  .tag-number{position:absolute;top:12px;right:12px;width:32px;height:32px;border-radius:50%;
+    border:2px solid var(--craie); display:flex;align-items:center;justify-content:center;
+    font-family:'Permanent Marker',cursive;color:var(--craie);font-size:14px;transform:rotate(-6deg);
+    pointer-events:none;}
+  .verse{position:absolute;left:20px;right:20px;bottom:78px;text-align:left;}
+  .verse .line{font-family:'Anton',sans-serif;text-transform:uppercase;color:var(--craie);
+    font-size:clamp(24px,7vw,32px);line-height:.95;letter-spacing:.01em;display:block;}
+  .verse .line:nth-child(1){transform:rotate(-1.5deg) translateX(-2px);}
+  .verse .line:nth-child(2){transform:rotate(1deg) translateX(6px);}
+  .verse .line:nth-child(3){transform:rotate(-.5deg) translateX(0);}
+  .stamp{position:absolute;left:20px;right:20px;bottom:16px;font-size:10px;letter-spacing:.06em;
+    color:rgba(245,242,233,.65);display:flex;justify-content:space-between;
+    border-top:1px solid rgba(245,242,233,.25);padding-top:6px;pointer-events:none;}
+
+  .startOverlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    background:rgba(21,19,15,.55);cursor:pointer;z-index:10;}
+  .startOverlay div{border:2px solid var(--craie);color:var(--craie);padding:14px 22px;
+    border-radius:30px;font-size:13px;letter-spacing:.05em;background:rgba(21,19,15,.6);}
+
+  .scrollHint{position:absolute;left:50%;bottom:88px;transform:translateX(-50%);
+    color:rgba(245,242,233,.55);font-size:20px;animation:bounce 1.6s infinite;pointer-events:none;}
+  @keyframes bounce{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,6px);}}
+
+  /* ---- panneau signal suivant ---- */
+  .next-panel{min-height:100svh;background:var(--craie);color:var(--bitume);
+    padding:48px 24px 60px;scroll-snap-align:start;}
+  .next-panel .eyebrow{font-size:11px;letter-spacing:.14em;color:var(--rouille);font-weight:700;}
+  .next-panel h2{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(26px,8vw,36px);
+    line-height:1;margin:10px 0 22px;}
+  .next-panel .instruction{font-size:15px;line-height:1.6;max-width:34ch;}
+  .next-panel .badge{display:inline-flex;align-items:center;justify-content:center;
+    width:46px;height:46px;border-radius:50%;border:2px solid var(--rouille);color:var(--rouille);
+    font-family:'Permanent Marker',cursive;font-size:17px;margin-bottom:18px;}
+  .next-panel .footer-note{margin-top:40px;font-size:10.5px;color:#8a8578;}
+  .next-panel a.backup{display:inline-block;margin-top:6px;color:#8a8578;text-decoration:underline;}
+</style>
+</head>
+<body>
+
+  <div class="frame">
+    <video id="v" src="../../videos/ACO_11.mp4" loop playsinline></video>
+    <div class="scrim"></div>
+    <div class="tear"></div>
+    <div class="tag-number">11</div>
+
+    <!-- ↓↓↓ MODIFIEZ LE VERS ICI (2-4 mots par ligne, 3 lignes max) ↓↓↓ -->
+    <div class="verse">
+      <span class="line">VOTRE</span>
+      <span class="line">VERS</span>
+      <span class="line">ICI</span>
+    </div>
+    <!-- ↑↑↑ FIN DU VERS ↑↑↑ -->
+
+    <div class="stamp"><span>20E · ÉTAPE 11</span><span>Q-11</span></div>
+    <div class="scrollHint">▼</div>
+
+    <div class="startOverlay" id="startOverlay" onclick="startWithSound()">
+      <div>▶ TOUCHER POUR LANCER</div>
+    </div>
+  </div>
+
+  
+  <div class="next-panel">
+    <div class="eyebrow">SIGNAL SUIVANT</div>
+    <div class="badge">12</div>
+    <h2>Direction<br>signal 12</h2>
+    <p class="instruction">96, boulevard Davout.</p>
+    <div class="footer-note">
+      perdu·e ? le carnet complet reste disponible, au cas où.
+    </div>
+  </div>
+
+  <script>
+    const v = document.getElementById('v');
+    function startWithSound(){
+      v.muted = false;
+      v.play();
+      document.getElementById('startOverlay').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
